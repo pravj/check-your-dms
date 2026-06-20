@@ -23,7 +23,7 @@ export const REPLIES: Reply[] = [
   },
   {
     id: 'uno-reverse',
-    label: 'Uno reverse — pitch back',
+    label: 'Uno reverse',
     text: "We're looking for more users who would run their code with us. Would you be interested?",
     time: '15:32',
   },
