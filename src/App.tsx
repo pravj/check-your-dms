@@ -63,7 +63,7 @@ export default function App() {
         {/* Hero */}
         <section className="pt-12 pb-10 sm:pt-16">
           <h1 className="max-w-4xl text-[28px] leading-[1.1] font-medium tracking-[-0.02em] sm:text-[40px]">
-            Did you miss on Cursor?
+            Did you miss out on Cursor?
             <br />
             <span className="text-[var(--muted)]">
               Manufacture the regret in seconds.
