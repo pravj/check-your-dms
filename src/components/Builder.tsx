@@ -16,7 +16,7 @@ type Option = {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="mb-6">
-      <div className="mb-2 text-[12px] font-medium tracking-[0.06em] text-[var(--muted)] uppercase">
+      <div className="mb-2.5 text-[16px] font-semibold tracking-[-0.01em] text-[var(--text)]">
         {label}
       </div>
       {children}

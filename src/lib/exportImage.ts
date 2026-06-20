@@ -13,7 +13,7 @@ async function nodeToPng(node: HTMLElement): Promise<string> {
 
 export async function downloadPng(
   node: HTMLElement,
-  filename = 'missed-cursor.png',
+  filename = 'missed-on-cursor.png',
 ): Promise<void> {
   const dataUrl = await nodeToPng(node)
   const a = document.createElement('a')

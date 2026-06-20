@@ -5,7 +5,7 @@ export const PITCHES: Pitch[] = [
   {
     id: 'founding-engineer',
     label: 'Founding engineer offer',
-    summary: 'Offering you a founding engineer seat',
+    summary: 'Offered you a founding engineer seat',
     bubbles: [
       "Hey! I'm a big fan of your work. I'm building something new and would love to talk to you. Would you be interested in being a founding engineer at Cursor?",
     ],
@@ -14,7 +14,7 @@ export const PITCHES: Pitch[] = [
   {
     id: 'series-b',
     label: 'Series B invite',
-    summary: 'Wants you in on the Series B round',
+    summary: 'Wanted you in on the Series B round',
     bubbles: [
       "I'm one of the co-founders of Cursor (the AI code editor). We're raising a Series B round and I was wondering if you might be interested in investing?",
     ],
@@ -23,7 +23,7 @@ export const PITCHES: Pitch[] = [
   {
     id: 'mit-call',
     label: 'Quick call?',
-    summary: 'Four MIT grads building an AI IDE, wants a call',
+    summary: 'Four MIT grads building an AI IDE, wanted a call',
     bubbles: [
       "we're a group of four MIT '22s working on a new IDE built for pair-programming with AI",
       'any time for a quick call?',
@@ -33,7 +33,7 @@ export const PITCHES: Pitch[] = [
   {
     id: 'feedback',
     label: 'Asking for feedback',
-    summary: 'MIT student wants feedback on cursor.so',
+    summary: 'MIT student wanted feedback on cursor.so',
     bubbles: [
       'Hey! Do you use any tools to help your writing/creative process?',
       "I'm an MIT student working on cursor.so and looking for some feedback.",

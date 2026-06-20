@@ -27,7 +27,7 @@ function randomBattery(): number {
 const DEFAULT_MEME: Meme = {
   pitchId: 'founding-engineer',
   customPitch: '',
-  replyId: 'vc-pass',
+  replyId: 'gpt4-wrapper',
   customReply: '',
   replyText: '',
   pitchDate: 'May 15, 2023',
@@ -44,7 +44,7 @@ export default function App() {
     replyText: randomReplyText(DEFAULT_MEME.replyId),
   }))
   const mockupRef = useRef<HTMLDivElement>(null)
-  const { theme, toggle } = useTheme()
+  const { pref, setPreference } = useTheme()
 
   // Selecting a reply re-rolls a random line from that option's pool.
   const set = (patch: Partial<Meme>) => {
@@ -57,15 +57,12 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen flex-col bg-[var(--paper)] text-[var(--text)]">
-      <Navbar theme={theme} onToggle={toggle} />
+      <Navbar pref={pref} onThemeChange={setPreference} />
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-5">
         {/* Hero */}
         <section className="pt-12 pb-10 sm:pt-16">
-          <div className="text-[13px] font-medium tracking-wide text-[var(--muted)]">
-            DM cope generator
-          </div>
-          <h1 className="mt-3 max-w-4xl text-[28px] leading-[1.1] font-medium tracking-[-0.02em] sm:text-[40px]">
+          <h1 className="max-w-4xl text-[28px] leading-[1.1] font-medium tracking-[-0.02em] sm:text-[40px]">
             Did you miss on Cursor?
             <br />
             <span className="text-[var(--muted)]">

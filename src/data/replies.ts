@@ -7,7 +7,7 @@ export const REPLIES: Reply[] = [
   {
     id: 'vc-pass',
     label: 'not a right fit',
-    summary: 'You pass like a tier-1 VC',
+    summary: 'You passed like a tier-1 VC',
     texts: [
       'Sorry, I only invest in marketplaces',
       "I don't see the moat here, we're going to pass",
@@ -22,7 +22,7 @@ export const REPLIES: Reply[] = [
   {
     id: 'gpt4-wrapper',
     label: 'I can build this myself',
-    summary: 'You say it is a GPT wrapper',
+    summary: 'You said it was a GPT wrapper',
     texts: [
       'tbh I can already build this myself by wiring GPT-4 into my editor',
       "isn't this just a thin wrapper over GPT-4?",
@@ -35,7 +35,7 @@ export const REPLIES: Reply[] = [
   {
     id: 'uno-reverse',
     label: 'Uno reverse',
-    summary: 'You pitch him your thing instead',
+    summary: 'You pitched him your thing instead',
     texts: [
       "funny you ask, I'm building something too. want to invest?",
       'before that, can I tell you about MY startup real quick',

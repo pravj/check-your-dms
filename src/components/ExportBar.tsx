@@ -18,7 +18,7 @@ export function ExportBar({ target, caption }: Props) {
     setBusy('download')
     try {
       await downloadPng(target.current)
-      setHint('Saved as missed-cursor.png')
+      setHint('Saved as missed-on-cursor.png')
     } finally {
       setBusy(null)
     }
@@ -47,25 +47,25 @@ export function ExportBar({ target, caption }: Props) {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <button
           onClick={onShare}
           disabled={busy !== null}
-          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[var(--pill)] px-5 py-3 text-[15px] font-semibold text-[var(--pill-text)] transition hover:opacity-90 disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--pill)] px-5 py-3 text-[15px] font-semibold text-[var(--pill-text)] transition hover:opacity-90 disabled:opacity-60 sm:w-auto sm:flex-1"
         >
           {busy === 'share' ? 'Opening…' : '𝕏  Share to X'}
         </button>
         <button
           onClick={onDownload}
           disabled={busy !== null}
-          className="rounded-full border border-[var(--border)] bg-[var(--paper)] px-5 py-3 text-[15px] font-semibold text-[var(--text)] transition hover:border-[var(--muted)] disabled:opacity-60"
+          className="w-full rounded-full border border-[var(--border)] bg-[var(--paper)] px-5 py-3 text-[15px] font-semibold text-[var(--text)] transition hover:border-[var(--muted)] disabled:opacity-60 sm:w-auto"
         >
           {busy === 'download' ? 'Rendering…' : 'Download PNG'}
         </button>
         <button
           onClick={onCopy}
           disabled={busy !== null}
-          className="rounded-full border border-[var(--border)] bg-[var(--paper)] px-5 py-3 text-[15px] font-semibold text-[var(--text)] transition hover:border-[var(--muted)] disabled:opacity-60"
+          className="w-full rounded-full border border-[var(--border)] bg-[var(--paper)] px-5 py-3 text-[15px] font-semibold text-[var(--text)] transition hover:border-[var(--muted)] disabled:opacity-60 sm:w-auto"
         >
           {busy === 'copy' ? 'Rendering…' : 'Copy image'}
         </button>
