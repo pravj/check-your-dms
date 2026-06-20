@@ -1,4 +1,4 @@
-import { CursorLogo } from './icons'
+import { CursorLogo, GitHubIcon } from './icons'
 
 export function Footer() {
   return (
@@ -17,6 +17,15 @@ export function Footer() {
           <p className="mt-3 text-[13px] leading-relaxed text-[var(--muted)]">
             A parody fan project for the “Missed on Cursor DM” trend.
           </p>
+          <a
+            href="https://github.com/pravj/check-your-dms"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-medium text-[var(--muted)] transition hover:text-[var(--text)]"
+          >
+            <GitHubIcon className="h-4 w-4" />
+            Source on GitHub
+          </a>
         </div>
 
         <div className="text-[14px] text-[var(--muted)] sm:text-right">
