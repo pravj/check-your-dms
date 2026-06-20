@@ -55,7 +55,7 @@ export default function App() {
           <div className="text-[13px] font-medium tracking-wide text-[var(--muted)]">
             DM cope generator
           </div>
-          <h1 className="mt-3 max-w-3xl text-[34px] leading-[1.08] font-medium tracking-[-0.02em] sm:text-[52px]">
+          <h1 className="mt-3 max-w-4xl text-[28px] leading-[1.1] font-medium tracking-[-0.02em] sm:text-[40px]">
             Did you miss on Cursor?
             <br />
             <span className="text-[var(--muted)]">
@@ -63,8 +63,8 @@ export default function App() {
             </span>
           </h1>
           <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-[var(--muted)]">
-            Build your own “wasted Cursor DM” screenshot — pick the pitch from
-            Michael, pick your reply (or leave him on read), and post the cope.
+            Generate your own “Missed on Cursor” DM. Pick the pitch from Michael,
+            pick your reply, and post the cope.
           </p>
         </section>
 
