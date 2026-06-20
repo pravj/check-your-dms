@@ -109,32 +109,6 @@ export function Builder({ meme, set }: Props) {
         )}
       </Field>
 
-      <div className="grid grid-cols-2 gap-4">
-        <Field label="Pitch date">
-          <input
-            value={meme.pitchDate}
-            onChange={(e) => set({ pitchDate: e.target.value })}
-            className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-[14px] outline-none focus:border-neutral-500"
-          />
-        </Field>
-        <Field label="Status-bar time">
-          <input
-            value={meme.statusTime}
-            onChange={(e) => set({ statusTime: e.target.value })}
-            className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-[14px] outline-none focus:border-neutral-500"
-          />
-        </Field>
-      </div>
-
-      {meme.replyId !== null && (
-        <Field label="Reply date">
-          <input
-            value={meme.replyDate}
-            onChange={(e) => set({ replyDate: e.target.value })}
-            className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-[14px] outline-none focus:border-neutral-500"
-          />
-        </Field>
-      )}
     </div>
   )
 }
