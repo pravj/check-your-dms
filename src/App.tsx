@@ -65,7 +65,7 @@ export default function App() {
           <h1 className="max-w-4xl text-[28px] leading-[1.1] font-medium tracking-[-0.02em] sm:text-[40px]">
             Did you miss out on Cursor?
             <br />
-            <span className="text-[var(--muted)]">
+            <span className="text-[21px] whitespace-nowrap text-[var(--muted)] sm:text-[40px] sm:whitespace-normal">
               Cope with the regret in seconds.
             </span>
           </h1>
