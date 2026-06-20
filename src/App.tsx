@@ -25,7 +25,7 @@ function randomBattery(): number {
 }
 
 const DEFAULT_MEME: Meme = {
-  pitchId: 'series-b',
+  pitchId: 'founding-engineer',
   customPitch: '',
   replyId: 'vc-pass',
   customReply: '',

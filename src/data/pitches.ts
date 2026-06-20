@@ -3,15 +3,6 @@ import type { Pitch } from '../types'
 /** The incoming (grey) DM from "Michael Truell". Real quotes + trend-bait. */
 export const PITCHES: Pitch[] = [
   {
-    id: 'series-b',
-    label: 'Series B invite',
-    summary: 'Wants you in on the Series B round',
-    bubbles: [
-      "I'm one of the co-founders of Cursor (the AI code editor). We're raising a Series B round and I was wondering if you might be interested in investing?",
-    ],
-    time: '10:42',
-  },
-  {
     id: 'founding-engineer',
     label: 'Founding engineer offer',
     summary: 'Offering you a founding engineer seat',
@@ -19,6 +10,15 @@ export const PITCHES: Pitch[] = [
       "Hey! I'm a big fan of your work. I'm building something new and would love to talk to you. Would you be interested in being a founding engineer at Cursor?",
     ],
     time: '14:08',
+  },
+  {
+    id: 'series-b',
+    label: 'Series B invite',
+    summary: 'Wants you in on the Series B round',
+    bubbles: [
+      "I'm one of the co-founders of Cursor (the AI code editor). We're raising a Series B round and I was wondering if you might be interested in investing?",
+    ],
+    time: '10:42',
   },
   {
     id: 'mit-call',

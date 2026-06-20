@@ -6,7 +6,7 @@ import type { Reply } from '../types'
 export const REPLIES: Reply[] = [
   {
     id: 'vc-pass',
-    label: 'not a right fit for VC',
+    label: 'not a right fit',
     summary: 'You pass like a tier-1 VC',
     texts: [
       'Sorry, I only invest in marketplaces',
