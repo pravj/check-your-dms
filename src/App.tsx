@@ -1,44 +1,27 @@
-import { useMemo, useRef, useState } from 'react'
-import type { Meme, ExamplePreset } from './types'
-import { EXAMPLES } from './data/examples'
+import { useRef, useState } from 'react'
+import type { Meme } from './types'
 import { PhoneMockup } from './components/PhoneMockup'
 import { Builder } from './components/Builder'
 import { ExportBar } from './components/ExportBar'
-import { ExamplesGallery } from './components/ExamplesGallery'
 
-function memeFromPreset(p: ExamplePreset): Meme {
-  return {
-    pitchId: p.pitchId,
-    customPitch: '',
-    replyId: p.replyId,
-    customReply: '',
-    caption: p.caption,
-    customCaption: '',
-    pitchDate: p.pitchDate,
-    replyDate: p.replyDate,
-    statusTime: '23:20',
-  }
+/** Tweet text the Share-to-X composer opens with (not rendered in the image). */
+const SHARE_CAPTION = "i found the reason I don't have $500M today"
+
+const DEFAULT_MEME: Meme = {
+  pitchId: 'series-b',
+  customPitch: '',
+  replyId: 'marketplaces',
+  customReply: '',
+  pitchDate: 'May 15, 2023',
+  replyDate: 'May 16, 2023',
+  statusTime: '23:20',
 }
 
 export default function App() {
-  const [meme, setMeme] = useState<Meme>(() => memeFromPreset(EXAMPLES[0]))
-  const [activeExample, setActiveExample] = useState<string | null>(EXAMPLES[0].id)
+  const [meme, setMeme] = useState<Meme>(DEFAULT_MEME)
   const mockupRef = useRef<HTMLDivElement>(null)
 
-  const set = (patch: Partial<Meme>) => {
-    setMeme((m) => ({ ...m, ...patch }))
-    setActiveExample(null) // any manual edit detaches from the preset
-  }
-
-  const pickExample = (p: ExamplePreset) => {
-    setMeme(memeFromPreset(p))
-    setActiveExample(p.id)
-  }
-
-  const caption = useMemo(
-    () => (meme.customCaption.trim() ? meme.customCaption : meme.caption),
-    [meme.customCaption, meme.caption],
-  )
+  const set = (patch: Partial<Meme>) => setMeme((m) => ({ ...m, ...patch }))
 
   return (
     <div className="min-h-screen bg-[#f6f7f9] text-neutral-900">
@@ -57,14 +40,9 @@ export default function App() {
           {/* Controls */}
           <div className="order-2 lg:order-1">
             <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
-              <div className="mb-5">
-                <ExamplesGallery onPick={pickExample} activeId={activeExample} />
-              </div>
-              <div className="mb-5 border-t border-neutral-100 pt-5">
-                <Builder meme={meme} set={set} />
-              </div>
+              <Builder meme={meme} set={set} />
               <div className="border-t border-neutral-100 pt-5">
-                <ExportBar target={mockupRef} caption={caption} />
+                <ExportBar target={mockupRef} caption={SHARE_CAPTION} />
               </div>
             </div>
           </div>

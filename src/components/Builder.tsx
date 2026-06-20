@@ -1,7 +1,6 @@
 import type { Meme } from '../types'
 import { PITCHES } from '../data/pitches'
 import { REPLIES } from '../data/replies'
-import { CAPTIONS } from '../data/captions'
 
 type Props = {
   meme: Meme
@@ -136,26 +135,6 @@ export function Builder({ meme, set }: Props) {
           />
         </Field>
       )}
-
-      <Field label="Caption (for the tweet text, not the image)">
-        <div className="flex flex-wrap gap-2">
-          {CAPTIONS.map((c) => (
-            <Chip
-              key={c}
-              active={meme.caption === c && meme.customCaption === ''}
-              onClick={() => set({ caption: c, customCaption: '' })}
-            >
-              {c.length > 32 ? c.slice(0, 32) + '…' : c}
-            </Chip>
-          ))}
-        </div>
-        <input
-          value={meme.customCaption}
-          onChange={(e) => set({ customCaption: e.target.value })}
-          placeholder="…or write your own caption"
-          className="mt-2 w-full rounded-lg border border-neutral-300 px-3 py-2 text-[14px] outline-none focus:border-neutral-500"
-        />
-      </Field>
     </div>
   )
 }

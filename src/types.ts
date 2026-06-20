@@ -16,28 +16,12 @@ export type Reply = {
   time: string
 }
 
-export type ExamplePreset = {
-  id: string
-  /** Who originally posted it — shown in the gallery. */
-  credit: string
-  pitchId: string
-  /** null = leave on read (no reply bubble). */
-  replyId: string | null
-  caption: string
-  /** Date separator above the pitch, e.g. "May 15, 2024". */
-  pitchDate: string
-  /** Date separator above the reply (only used when a reply exists). */
-  replyDate: string
-}
-
 /** The single source of truth the mockup renders from. */
 export type Meme = {
   pitchId: string
   customPitch: string
   replyId: string | null // null = leave on read
   customReply: string
-  caption: string
-  customCaption: string
   pitchDate: string
   replyDate: string
   /** Status-bar clock, e.g. "23:20". */
