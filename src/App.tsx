@@ -45,7 +45,7 @@ export default function App() {
       <div className="mx-auto max-w-6xl px-5 py-8">
         <header className="mb-6 text-center">
           <h1 className="text-[28px] font-extrabold tracking-tight sm:text-[34px]">
-            Did you miss Cursor?
+            Did you miss on Cursor?
           </h1>
           <p className="mt-1 text-[15px] text-neutral-500">
             Make your own “wasted Cursor DM” screenshot. Pick a pitch, pick your
