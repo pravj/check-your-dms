@@ -36,20 +36,6 @@ export const PITCHES: Pitch[] = [
     ],
     time: '14:42',
   },
-  {
-    id: 'devrel',
-    label: 'DevRel role',
-    bubbles: [
-      "We're looking for someone to lead our DevRel/DA efforts. Would you be interested?",
-    ],
-    time: '15:26',
-  },
-  {
-    id: 'hey',
-    label: 'Hey :)',
-    bubbles: ['hey :)'],
-    time: '01:54',
-  },
 ]
 
 export const PITCH_BY_ID = Object.fromEntries(
