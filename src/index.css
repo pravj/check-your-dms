@@ -1,7 +1,34 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/geist';
 
+/* Toggle dark mode via a `.dark` class on <html> instead of the OS preference. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* cursor.com-style warm design tokens. Swap under .dark for the toggle. */
 :root {
+  --paper: #f7f6f2; /* page background (warm cream) */
+  --panel: #f1f0ea; /* cards */
+  --panel-2: #eae8e0; /* insets / preview backdrop */
+  --text: #0d0d0d; /* headings / primary */
+  --muted: #6b6b66; /* secondary text */
+  --border: #e3e1d8; /* hairlines */
+  --accent: #e0542c; /* rust links + arrows */
+  --pill: #1a1815; /* primary button */
+  --pill-text: #ffffff;
   color-scheme: light;
+}
+
+.dark {
+  --paper: #0e0e0d;
+  --panel: #181816;
+  --panel-2: #201f1c;
+  --text: #f4f3ee;
+  --muted: #9c9a92;
+  --border: #2a2925;
+  --accent: #ff6a3d;
+  --pill: #f4f3ee;
+  --pill-text: #15140f;
+  color-scheme: dark;
 }
 
 html,
@@ -12,14 +39,13 @@ body,
 }
 
 body {
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
-  background: #f6f7f9;
+  font-family: 'Geist Variable', system-ui, -apple-system, sans-serif;
+  background: var(--paper);
+  color: var(--text);
 }
 
 /* The X / iOS message UI font stack — kept on the mockup root so the exported
-   screenshot always renders the same fonts regardless of page chrome. */
+   screenshot always renders the same system fonts regardless of site chrome. */
 .mockup-font {
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,

@@ -27,7 +27,7 @@ export const ScaledMockup = forwardRef<HTMLDivElement, { meme: Meme }>(
     return (
       <div ref={holderRef} className="flex w-full justify-center">
         <div
-          className="overflow-hidden rounded-[28px] border border-neutral-200 shadow-xl"
+          className="overflow-hidden rounded-[28px] border border-[var(--border)] shadow-xl"
           style={{ width: W * scale, height: H * scale }}
         >
           <div

@@ -51,26 +51,26 @@ export function ExportBar({ target, caption }: Props) {
         <button
           onClick={onShare}
           disabled={busy !== null}
-          className="flex-1 rounded-full bg-black px-5 py-3 text-[15px] font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-60"
+          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[var(--pill)] px-5 py-3 text-[15px] font-semibold text-[var(--pill-text)] transition hover:opacity-90 disabled:opacity-60"
         >
           {busy === 'share' ? 'Opening…' : '𝕏  Share to X'}
         </button>
         <button
           onClick={onDownload}
           disabled={busy !== null}
-          className="rounded-full border border-neutral-300 bg-white px-5 py-3 text-[15px] font-semibold text-neutral-800 transition hover:border-neutral-400 disabled:opacity-60"
+          className="rounded-full border border-[var(--border)] bg-[var(--paper)] px-5 py-3 text-[15px] font-semibold text-[var(--text)] transition hover:border-[var(--muted)] disabled:opacity-60"
         >
           {busy === 'download' ? 'Rendering…' : 'Download PNG'}
         </button>
         <button
           onClick={onCopy}
           disabled={busy !== null}
-          className="rounded-full border border-neutral-300 bg-white px-5 py-3 text-[15px] font-semibold text-neutral-800 transition hover:border-neutral-400 disabled:opacity-60"
+          className="rounded-full border border-[var(--border)] bg-[var(--paper)] px-5 py-3 text-[15px] font-semibold text-[var(--text)] transition hover:border-[var(--muted)] disabled:opacity-60"
         >
           {busy === 'copy' ? 'Rendering…' : 'Copy image'}
         </button>
       </div>
-      <div className="mt-2 h-5 text-[13px] text-neutral-500">{hint}</div>
+      <div className="mt-2 h-5 text-[13px] text-[var(--muted)]">{hint}</div>
     </div>
   )
 }

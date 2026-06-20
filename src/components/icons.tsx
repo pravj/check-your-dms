@@ -1,5 +1,75 @@
 /** Inline SVGs so the export has no external requests and stays crisp at 3x. */
 
+/** Cursor's hexagonal cube logo mark. */
+export function CursorLogo({ className = 'h-6 w-6' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-label="Cursor">
+      <path
+        fill="currentColor"
+        d="M12 1.5 21.5 7v10L12 22.5 2.5 17V7L12 1.5zm0 2.31L4.5 8.16v7.68L12 20.19l7.5-4.35V8.16L12 3.81z"
+      />
+      <path
+        fill="currentColor"
+        opacity="0.55"
+        d="M12 3.81 19.5 8.16 12 12.5 4.5 8.16 12 3.81z"
+      />
+      <path
+        fill="currentColor"
+        opacity="0.85"
+        d="M12 12.5 19.5 8.16v7.68L12 20.19V12.5z"
+      />
+    </svg>
+  )
+}
+
+export function SunIcon({ className = 'h-[18px] w-[18px]' }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      className={className}
+    >
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+    </svg>
+  )
+}
+
+export function MoonIcon({ className = 'h-[18px] w-[18px]' }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
+  )
+}
+
+export function ArrowRight({ className = 'h-4 w-4' }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  )
+}
+
 export function VerifiedBadge({ className = 'h-[18px] w-[18px]' }: { className?: string }) {
   return (
     <svg viewBox="0 0 22 22" aria-label="Verified" className={className}>
