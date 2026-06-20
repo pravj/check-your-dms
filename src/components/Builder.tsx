@@ -87,29 +87,29 @@ export function Builder({ meme, set }: Props) {
     ...PITCHES.map((p) => ({
       id: p.id,
       title: p.label,
-      snippet: p.bubbles.join('  '),
+      snippet: p.summary,
     })),
     {
       id: 'custom',
       title: 'Custom',
-      snippet: meme.customPitch || 'Write your own incoming DM…',
+      snippet: 'Write your own incoming DM',
     },
   ]
 
   const replyOptions: Option[] = [
-    { id: null, title: 'Leave on read', snippet: 'No reply — peak regret' },
-    { id: 'blocked', title: 'Blocked', snippet: 'You blocked this account' },
-    ...REPLIES.map((r) => ({ id: r.id, title: r.label, snippet: r.text })),
+    { id: null, title: 'Leave on read', snippet: 'You left him on read' },
+    { id: 'blocked', title: 'Blocked', snippet: 'You blocked him' },
+    ...REPLIES.map((r) => ({ id: r.id, title: r.label, snippet: r.summary })),
     {
       id: 'custom',
       title: 'Custom',
-      snippet: meme.customReply || 'Write your own reply…',
+      snippet: 'Write your own reply',
     },
   ]
 
   return (
     <div>
-      <Field label="The pitch — from Michael">
+      <Field label="The pitch (from Michael)">
         <OptionList
           options={pitchOptions}
           value={meme.pitchId}

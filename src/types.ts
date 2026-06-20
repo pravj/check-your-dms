@@ -1,6 +1,8 @@
 export type Pitch = {
   id: string
   label: string
+  /** Short, plain-language gist shown under the title in the picker. */
+  summary: string
   /** One or more grey incoming bubbles, in order. */
   bubbles: string[]
   /** Timestamp under the last incoming bubble, e.g. "10:42". */
@@ -10,6 +12,8 @@ export type Pitch = {
 export type Reply = {
   id: string
   label: string
+  /** Short, plain-language gist shown under the title in the picker. */
+  summary: string
   /** Blue outgoing bubble text. */
   text: string
   /** Timestamp under the reply, e.g. "09:15". */
