@@ -22,12 +22,6 @@ export const REPLIES: Reply[] = [
     time: '15:32',
   },
   {
-    id: 'hey-michael',
-    label: '"hey michael"',
-    text: 'hey michael',
-    time: '09:44',
-  },
-  {
     id: 'uno-reverse',
     label: 'Uno reverse — pitch back',
     text: "We're looking for more users who would run their code with us. Would you be interested?",
