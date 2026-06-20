@@ -22,13 +22,19 @@ function resolvePitch(meme: Meme) {
   return { bubbles: p.bubbles, time: p.time }
 }
 
-function resolveReply(meme: Meme) {
-  if (meme.replyId === null) return null // leave on read
+type ReplyState =
+  | { kind: 'reply'; text: string; time: string }
+  | { kind: 'none' } // left on read
+  | { kind: 'blocked' }
+
+function resolveReply(meme: Meme): ReplyState {
+  if (meme.replyId === null) return { kind: 'none' }
+  if (meme.replyId === 'blocked') return { kind: 'blocked' }
   if (meme.replyId === 'custom') {
-    return { text: meme.customReply || ' ', time: '09:15' }
+    return { kind: 'reply', text: meme.customReply || ' ', time: '09:15' }
   }
   const r = REPLY_BY_ID[meme.replyId]
-  return { text: r.text, time: r.time }
+  return { kind: 'reply', text: r.text, time: r.time }
 }
 
 export const PhoneMockup = forwardRef<HTMLDivElement, { meme: Meme }>(
@@ -40,10 +46,10 @@ export const PhoneMockup = forwardRef<HTMLDivElement, { meme: Meme }>(
     return (
       <div
         ref={ref}
-        className="mockup-font w-[390px] bg-white text-[#0f1419] select-none"
+        className="mockup-font flex h-[760px] w-[390px] flex-col bg-white text-[#0f1419] select-none"
       >
         {/* Status bar */}
-        <div className="flex items-center justify-between px-6 pt-3 pb-1">
+        <div className="flex shrink-0 items-center justify-between px-6 pt-3 pb-1">
           <span className="text-[15px] font-semibold tracking-tight text-black">
             {meme.statusTime}
           </span>
@@ -51,7 +57,7 @@ export const PhoneMockup = forwardRef<HTMLDivElement, { meme: Meme }>(
         </div>
 
         {/* DM header */}
-        <div className="flex items-center justify-between px-4 py-2">
+        <div className="flex shrink-0 items-center justify-between px-4 py-2">
           <div className="flex items-center gap-3 text-[#0f1419]">
             <BackArrow />
             <img src={avatar} alt="" className="h-8 w-8 rounded-full object-cover" />
@@ -67,7 +73,7 @@ export const PhoneMockup = forwardRef<HTMLDivElement, { meme: Meme }>(
         </div>
 
         {/* Profile card */}
-        <div className="flex flex-col items-center px-4 pt-5 pb-3">
+        <div className="flex shrink-0 flex-col items-center px-4 pt-5 pb-3">
           <img
             src={avatar}
             alt=""
@@ -84,8 +90,10 @@ export const PhoneMockup = forwardRef<HTMLDivElement, { meme: Meme }>(
           </button>
         </div>
 
-        {/* Thread */}
-        <div className="px-4 pb-2">
+        {/* Thread — flex-1 so the card height stays fixed regardless of whether
+            there's a reply. Content is top-anchored with trailing whitespace,
+            like a real short DM thread. */}
+        <div className="min-h-0 flex-1 overflow-hidden px-4 pb-2">
           {/* pitch date */}
           <div className="py-3 text-center text-[13px] font-semibold text-[#536471]">
             {meme.pitchDate}
@@ -98,7 +106,7 @@ export const PhoneMockup = forwardRef<HTMLDivElement, { meme: Meme }>(
           </div>
           <BubbleTime time={pitch.time} align="left" />
 
-          {reply && (
+          {reply.kind === 'reply' && (
             <>
               {!sameDay && (
                 <div className="py-3 text-center text-[13px] font-semibold text-[#536471]">
@@ -111,10 +119,16 @@ export const PhoneMockup = forwardRef<HTMLDivElement, { meme: Meme }>(
               <BubbleTime time={reply.time} align="right" showCheck />
             </>
           )}
+
+          {reply.kind === 'blocked' && (
+            <div className="mt-5 text-center text-[13px] text-[#536471]">
+              You blocked this account
+            </div>
+          )}
         </div>
 
         {/* Message input bar */}
-        <div className="flex items-center gap-3 px-4 py-3">
+        <div className="flex shrink-0 items-center gap-3 px-4 py-3">
           <div className="text-[#1d9bf0]">
             <PlusIcon />
           </div>

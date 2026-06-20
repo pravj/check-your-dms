@@ -82,6 +82,12 @@ export function Builder({ meme, set }: Props) {
           >
             🫥 Leave on read
           </Chip>
+          <Chip
+            active={meme.replyId === 'blocked'}
+            onClick={() => set({ replyId: 'blocked' })}
+          >
+            🚫 Blocked
+          </Chip>
           {REPLIES.map((r) => (
             <Chip
               key={r.id}
