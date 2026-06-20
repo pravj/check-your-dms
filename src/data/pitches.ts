@@ -20,7 +20,7 @@ export const PITCHES: Pitch[] = [
   },
   {
     id: 'mit-call',
-    label: 'MIT — quick call?',
+    label: 'Quick call?',
     bubbles: [
       "we're a group of four MIT '22s working on a new IDE built for pair-programming with AI",
       'any time for a quick call?',
@@ -46,7 +46,7 @@ export const PITCHES: Pitch[] = [
   },
   {
     id: 'hey',
-    label: 'just "hey :)"',
+    label: 'Hey :)',
     bubbles: ['hey :)'],
     time: '01:54',
   },
