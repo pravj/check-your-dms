@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import { MacWindow } from './components/MacWindow'
 import { useTheme } from './lib/useTheme'
+import { randomReplyText } from './data/replies'
 
 /** Tweet text the Share-to-X composer opens with (not rendered in the image). */
 const SHARE_CAPTION = "i found the reason I don't have $500M today"
@@ -26,8 +27,9 @@ function randomBattery(): number {
 const DEFAULT_MEME: Meme = {
   pitchId: 'series-b',
   customPitch: '',
-  replyId: 'marketplaces',
+  replyId: 'vc-pass',
   customReply: '',
+  replyText: '',
   pitchDate: 'May 15, 2023',
   replyDate: 'May 16, 2023',
   statusTime: '23:20',
@@ -39,11 +41,19 @@ export default function App() {
     ...DEFAULT_MEME,
     statusTime: currentStatusTime(),
     batteryPct: randomBattery(),
+    replyText: randomReplyText(DEFAULT_MEME.replyId),
   }))
   const mockupRef = useRef<HTMLDivElement>(null)
   const { theme, toggle } = useTheme()
 
-  const set = (patch: Partial<Meme>) => setMeme((m) => ({ ...m, ...patch }))
+  // Selecting a reply re-rolls a random line from that option's pool.
+  const set = (patch: Partial<Meme>) => {
+    const next: Partial<Meme> =
+      'replyId' in patch
+        ? { ...patch, replyText: randomReplyText(patch.replyId ?? null) }
+        : patch
+    setMeme((m) => ({ ...m, ...next }))
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-[var(--paper)] text-[var(--text)]">

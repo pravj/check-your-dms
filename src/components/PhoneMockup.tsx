@@ -34,7 +34,7 @@ function resolveReply(meme: Meme): ReplyState {
     return { kind: 'reply', text: meme.customReply || ' ', time: '09:15' }
   }
   const r = REPLY_BY_ID[meme.replyId]
-  return { kind: 'reply', text: r.text, time: r.time }
+  return { kind: 'reply', text: meme.replyText || r.texts[0], time: r.time }
 }
 
 export const PhoneMockup = forwardRef<HTMLDivElement, { meme: Meme }>(

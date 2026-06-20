@@ -14,8 +14,8 @@ export type Reply = {
   label: string
   /** Short, plain-language gist shown under the title in the picker. */
   summary: string
-  /** Blue outgoing bubble text. */
-  text: string
+  /** Pool of possible blue outgoing bubble texts; one is chosen at random. */
+  texts: string[]
   /** Timestamp under the reply, e.g. "09:15". */
   time: string
 }
@@ -26,6 +26,8 @@ export type Meme = {
   customPitch: string
   replyId: string | null // null = leave on read
   customReply: string
+  /** The randomly-chosen blue-bubble text for the current pooled reply. */
+  replyText: string
   pitchDate: string
   replyDate: string
   /** Status-bar clock, e.g. "23:20". */
