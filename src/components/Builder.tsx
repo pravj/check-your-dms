@@ -1,0 +1,161 @@
+import type { Meme } from '../types'
+import { PITCHES } from '../data/pitches'
+import { REPLIES } from '../data/replies'
+import { CAPTIONS } from '../data/captions'
+
+type Props = {
+  meme: Meme
+  set: (patch: Partial<Meme>) => void
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="mb-5">
+      <div className="mb-2 text-[13px] font-semibold tracking-wide text-neutral-500 uppercase">
+        {label}
+      </div>
+      {children}
+    </div>
+  )
+}
+
+function Chip({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean
+  onClick: () => void
+  children: React.ReactNode
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={[
+        'rounded-full border px-3 py-[6px] text-[13px] font-medium transition',
+        active
+          ? 'border-black bg-black text-white'
+          : 'border-neutral-300 bg-white text-neutral-700 hover:border-neutral-400',
+      ].join(' ')}
+    >
+      {children}
+    </button>
+  )
+}
+
+export function Builder({ meme, set }: Props) {
+  return (
+    <div>
+      <Field label="The pitch (from Michael)">
+        <div className="flex flex-wrap gap-2">
+          {PITCHES.map((p) => (
+            <Chip
+              key={p.id}
+              active={meme.pitchId === p.id}
+              onClick={() => set({ pitchId: p.id })}
+            >
+              {p.label}
+            </Chip>
+          ))}
+          <Chip
+            active={meme.pitchId === 'custom'}
+            onClick={() => set({ pitchId: 'custom' })}
+          >
+            ✏️ Custom
+          </Chip>
+        </div>
+        {meme.pitchId === 'custom' && (
+          <textarea
+            value={meme.customPitch}
+            onChange={(e) => set({ customPitch: e.target.value })}
+            placeholder="Type the incoming DM…"
+            rows={3}
+            className="mt-2 w-full rounded-lg border border-neutral-300 p-2 text-[14px] outline-none focus:border-neutral-500"
+          />
+        )}
+      </Field>
+
+      <Field label="Your reply">
+        <div className="flex flex-wrap gap-2">
+          <Chip
+            active={meme.replyId === null}
+            onClick={() => set({ replyId: null })}
+          >
+            🫥 Leave on read
+          </Chip>
+          {REPLIES.map((r) => (
+            <Chip
+              key={r.id}
+              active={meme.replyId === r.id}
+              onClick={() => set({ replyId: r.id })}
+            >
+              {r.label}
+            </Chip>
+          ))}
+          <Chip
+            active={meme.replyId === 'custom'}
+            onClick={() => set({ replyId: 'custom' })}
+          >
+            ✏️ Custom
+          </Chip>
+        </div>
+        {meme.replyId === 'custom' && (
+          <textarea
+            value={meme.customReply}
+            onChange={(e) => set({ customReply: e.target.value })}
+            placeholder="Type your regretful reply…"
+            rows={2}
+            className="mt-2 w-full rounded-lg border border-neutral-300 p-2 text-[14px] outline-none focus:border-neutral-500"
+          />
+        )}
+      </Field>
+
+      <div className="grid grid-cols-2 gap-4">
+        <Field label="Pitch date">
+          <input
+            value={meme.pitchDate}
+            onChange={(e) => set({ pitchDate: e.target.value })}
+            className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-[14px] outline-none focus:border-neutral-500"
+          />
+        </Field>
+        <Field label="Status-bar time">
+          <input
+            value={meme.statusTime}
+            onChange={(e) => set({ statusTime: e.target.value })}
+            className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-[14px] outline-none focus:border-neutral-500"
+          />
+        </Field>
+      </div>
+
+      {meme.replyId !== null && (
+        <Field label="Reply date">
+          <input
+            value={meme.replyDate}
+            onChange={(e) => set({ replyDate: e.target.value })}
+            className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-[14px] outline-none focus:border-neutral-500"
+          />
+        </Field>
+      )}
+
+      <Field label="Caption (for the tweet text, not the image)">
+        <div className="flex flex-wrap gap-2">
+          {CAPTIONS.map((c) => (
+            <Chip
+              key={c}
+              active={meme.caption === c && meme.customCaption === ''}
+              onClick={() => set({ caption: c, customCaption: '' })}
+            >
+              {c.length > 32 ? c.slice(0, 32) + '…' : c}
+            </Chip>
+          ))}
+        </div>
+        <input
+          value={meme.customCaption}
+          onChange={(e) => set({ customCaption: e.target.value })}
+          placeholder="…or write your own caption"
+          className="mt-2 w-full rounded-lg border border-neutral-300 px-3 py-2 text-[14px] outline-none focus:border-neutral-500"
+        />
+      </Field>
+    </div>
+  )
+}
