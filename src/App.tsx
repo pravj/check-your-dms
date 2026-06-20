@@ -66,7 +66,7 @@ export default function App() {
             Did you miss out on Cursor?
             <br />
             <span className="text-[var(--muted)]">
-              Manufacture the regret in seconds.
+              Cope with the regret in seconds.
             </span>
           </h1>
           <p className="mt-5 max-w-4xl text-[16px] leading-relaxed text-[var(--muted)]">
