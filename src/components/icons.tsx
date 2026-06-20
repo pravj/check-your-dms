@@ -24,22 +24,33 @@ export function BackArrow() {
 
 export function PhoneIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-[22px] w-[22px]">
-      <path
-        fill="currentColor"
-        d="M19.13 21.974c-1.766 0-4.027-.65-6.6-2.135-2.95-1.704-5.27-3.32-7.45-6.46C2.96 10.265 2.026 7.7 2.026 5.85c0-1.39.84-2.62 2.13-3.13l1.49-.59c.61-.24 1.31-.01 1.66.55l1.74 2.83c.36.59.21 1.36-.35 1.77l-1.06.77c-.2.15-.27.42-.16.65.42.91 1.1 1.93 1.99 2.82.89.89 1.91 1.57 2.82 1.99.23.11.5.04.65-.16l.77-1.06c.41-.56 1.18-.71 1.77-.35l2.83 1.74c.56.35.79 1.05.55 1.66l-.59 1.49c-.51 1.29-1.74 2.13-3.13 2.13z"
-      />
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-[21px] w-[21px]"
+    >
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
     </svg>
   )
 }
 
 export function VideoIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-[22px] w-[22px]">
-      <path
-        fill="currentColor"
-        d="M5 4.5h9c1.1 0 2 .9 2 2v2.2l3.3-2.1c.66-.42 1.52.05 1.52.84v9.12c0 .79-.86 1.26-1.52.84L16 15.3v2.2c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2v-11c0-1.1.9-2 2-2z"
-      />
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-[21px] w-[21px]"
+    >
+      <path d="M23 7l-7 5 7 5V7z" />
+      <rect x="1" y="5" width="15" height="14" rx="2.5" ry="2.5" />
     </svg>
   )
 }
@@ -82,8 +93,10 @@ export function CheckMark() {
   )
 }
 
-/** iOS-style status bar right cluster: signal, wifi, low battery. */
-export function StatusIcons() {
+/** iOS-style status bar right cluster: signal, wifi, battery.
+ *  Battery fill scales to `batteryPct` and only turns red when actually low. */
+export function StatusIcons({ batteryPct }: { batteryPct: number }) {
+  const low = batteryPct <= 20
   return (
     <div className="flex items-center gap-[5px] text-black">
       {/* signal */}
@@ -102,10 +115,16 @@ export function StatusIcons() {
           d="M8 2.2c2.4 0 4.6.9 6.3 2.4.3.3.3.7.02 1L13.4 6.5c-.27.28-.7.28-.98.03A6.6 6.6 0 0 0 8 4.9a6.6 6.6 0 0 0-4.42 1.66c-.28.25-.71.25-.98-.03L1.68 5.6a.69.69 0 0 1 .02-1A9.36 9.36 0 0 1 8 2.2zm0 3.5c1.3 0 2.5.48 3.4 1.3.3.27.3.72.02 1l-.92.95c-.26.27-.68.28-.96.03A3 3 0 0 0 8 8.2c-.6 0-1.15.18-1.54.78-.28.25-.7.24-.96-.03l-.92-.95a.69.69 0 0 1 .02-1A5.1 5.1 0 0 1 8 5.7zm0 3.4c.66 0 1.2.54 1.2 1.2S8.66 11.5 8 11.5 6.8 10.96 6.8 10.3 7.34 9.1 8 9.1z"
         />
       </svg>
-      {/* battery (low / red) */}
+      {/* battery — fill width tracks level, red only when low */}
       <div className="relative flex items-center">
         <div className="h-[11px] w-[22px] rounded-[3px] border border-black/40 p-[1.5px]">
-          <div className="h-full w-[28%] rounded-[1px] bg-red-500" />
+          <div
+            className="h-full rounded-[1px]"
+            style={{
+              width: `${Math.max(8, Math.min(100, batteryPct))}%`,
+              background: low ? '#ef4444' : '#0f1419',
+            }}
+          />
         </div>
         <div className="ml-[0.5px] h-[4px] w-[1.5px] rounded-r-sm bg-black/40" />
       </div>

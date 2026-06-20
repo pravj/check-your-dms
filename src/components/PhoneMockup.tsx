@@ -53,7 +53,7 @@ export const PhoneMockup = forwardRef<HTMLDivElement, { meme: Meme }>(
           <span className="text-[15px] font-semibold tracking-tight text-black">
             {meme.statusTime}
           </span>
-          <StatusIcons />
+          <StatusIcons batteryPct={meme.batteryPct} />
         </div>
 
         {/* DM header */}

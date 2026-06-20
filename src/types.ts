@@ -26,4 +26,6 @@ export type Meme = {
   replyDate: string
   /** Status-bar clock, e.g. "23:20". */
   statusTime: string
+  /** Status-bar battery level, 0–100. */
+  batteryPct: number
 }
