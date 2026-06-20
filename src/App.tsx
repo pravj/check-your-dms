@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import type { Meme } from './types'
-import { PhoneMockup } from './components/PhoneMockup'
+import { ScaledMockup } from './components/ScaledMockup'
 import { Builder } from './components/Builder'
 import { ExportBar } from './components/ExportBar'
 
@@ -53,9 +53,9 @@ export default function App() {
           </p>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_390px]">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_390px]">
           {/* Controls */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 min-w-0 lg:order-1">
             <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
               <Builder meme={meme} set={set} />
               <div className="border-t border-neutral-100 pt-5">
@@ -65,13 +65,9 @@ export default function App() {
           </div>
 
           {/* Live preview */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 min-w-0 lg:order-2">
             <div className="lg:sticky lg:top-8">
-              <div className="flex justify-center">
-                <div className="overflow-hidden rounded-[28px] border border-neutral-200 shadow-xl">
-                  <PhoneMockup ref={mockupRef} meme={meme} />
-                </div>
-              </div>
+              <ScaledMockup ref={mockupRef} meme={meme} />
               <p className="mt-3 text-center text-[12px] text-neutral-400">
                 Live preview · exports exactly what you see
               </p>
