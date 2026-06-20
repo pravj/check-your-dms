@@ -62,7 +62,7 @@ export default function App() {
               Manufacture the regret in seconds.
             </span>
           </h1>
-          <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-[var(--muted)]">
+          <p className="mt-5 max-w-4xl text-[16px] leading-relaxed text-[var(--muted)]">
             Generate your own “Missed on Cursor” DM. Pick the pitch from Michael,
             pick your reply, and post the cope.
           </p>
